@@ -57,7 +57,7 @@ function Navbar() {
             <Flex width={'100%'} position={'fixed'} bg='#0E0E0F' p='12px 25px' minWidth='max-content' alignItems='center' >
                 <Box w={'25%'} display='flex' alignItems='center' >
                     <HiOutlineBars3 size={'25px'} color='white' />
-                    <Img w={'126px'} h='36px' pl='19px' src="https://www.citypng.com/public/uploads/preview/-51609516331ylqch0vmc9.png" />
+                    <Img w={'128px'} h='35px' pl='19px' src="https://youtube-reactjs-clone-123.netlify.app/static/media/yt-logo.d6505fbc930734374cea.png" />
 
                 </Box>
                 <Box w={'50%'} >
