@@ -6,9 +6,10 @@ function ContextApi({children}) {
     const [loading,setLoading]=useState(false);
     const [search,setSearch]=useState([]);
     const [query,setQuery]=useState("");
+    const [error, seError]=useState(false);
   
     return (
-       <Context.Provider value={{query,setQuery}}>
+       <Context.Provider value={{query,setQuery,setLoading,seError,loading,error}}>
            {children}
        </Context.Provider>
     );

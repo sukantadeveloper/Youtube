@@ -1,14 +1,26 @@
+import { Box, Text } from '@chakra-ui/react';
 import React from 'react';
 import { useContext } from 'react';
-import { Context } from '../Context/ContextApi';
+import { Context, loading } from '../Context/ContextApi';
 
 function Home() {
-    const {query}=useContext(Context);
-    console.log(query,"q");
+    const { query, loading } = useContext(Context);
+    console.log(query, "q");
     return (
-        <div>
-          <h1> Home Page</h1>
-        </div>
+        <Box paddingTop={'75px'}>
+            
+
+            {loading ? <h1> Loading</h1> : 
+                query ?
+                    query.map((ele) => (
+                        <Box key={Math.random()}>
+                            <Text>{ele.video.descriptionSnippet} </Text>
+                            <img src={ele.video.thumbnails[0].url} alt="" />
+                        </Box>
+                    ))
+                    : ""
+            }
+        </Box>
     );
 }
 
