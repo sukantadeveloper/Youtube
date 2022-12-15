@@ -6,11 +6,10 @@ import { AiOutlineFlag } from "react-icons/ai";
 import { MdLocalFireDepartment, MdLiveTv } from "react-icons/md";
 import { CgMusicNote } from "react-icons/cg";
 import { FiFilm } from "react-icons/fi";
-import { IoGameControllerSharp } from "react-icons/io5";
-import { ImNewspaper } from "react-icons/im";
-import { GiDiamondTrophy, GiEclipse } from "react-icons/gi";
+import { GiDiamondTrophy } from "react-icons/gi";
 import { RiLightbulbLine, RiFeedbackLine } from "react-icons/ri";
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
+import { Divider } from '@chakra-ui/react'
 function LeftMenuBar() {
     const Category = (e) => {
         console.log(e);
@@ -21,7 +20,7 @@ function LeftMenuBar() {
 //  ]
  
     return (
-        <Box className='parent' w={"20%"} bg='black' border={'1px solid red'} h='100vh' position={'fixed'} overflow='scroll' scrollBehavior={'smooth'} pt='20px' >
+        <Box className='parent' w={"20%"} bg='#0E0E0F'  h='100vh' position={'fixed'} overflow='scroll' scrollBehavior={'smooth'} pt='20px' >
             <Box _hover={{
                 cursor: "pointer",
                 background: "#272727",
@@ -131,7 +130,7 @@ function LeftMenuBar() {
                 <Text pl='15px'> Sports</Text>
             </Box>
             </Box>
-            <hr />
+            <Divider width={'90%'} m='auto' />
             <Box _hover={{
                 cursor: "pointer",
                 background: "#272727",

@@ -1,3 +1,15 @@
 .parent::-webkit-scrollbar{
     width: 0;
 }
+.video_title{
+    font-size: 14px;
+    font-weight:bold;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    padding-left: 10px; 
+    padding-right: 10px;
+}

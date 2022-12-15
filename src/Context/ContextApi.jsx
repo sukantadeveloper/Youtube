@@ -4,12 +4,12 @@ import { createContext } from 'react';
 export const Context= createContext();
 function ContextApi({children}) {
     const [loading,setLoading]=useState(false);
-    const [search,setSearch]=useState([]);
-    const [query,setQuery]=useState("");
+    const [search,setSearch]=useState("New");
+    const [data,setData]=useState("");
     const [error, seError]=useState(false);
   
     return (
-       <Context.Provider value={{query,setQuery,setLoading,seError,loading,error}}>
+       <Context.Provider value={{data,setData,search,setSearch,setLoading,seError,loading,error}}>
            {children}
        </Context.Provider>
     );

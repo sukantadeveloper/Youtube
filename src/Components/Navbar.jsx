@@ -15,7 +15,7 @@ import { VscAccount } from 'react-icons/vsc'
 import { Link } from 'react-router-dom';
 
 function Navbar() {
-    const { setLoading, setQuery, seError } = useContext(Context);
+    const { setLoading, setData,search,setSearch, seError } = useContext(Context);
     const va = useRef("");
     function debounce(fn, delay) {
         let id;
@@ -33,23 +33,24 @@ function Navbar() {
 
 
     const getdata = () => {
+       setSearch(va.current.value);
+       
+
+    }
+
+    useEffect(() => {
         setLoading(true);
-        fetchData(`search/?q=${va.current.value}`).then((res) => {
+ fetchData(`search/?q=${search}`).then((res) => {
             try {
 
-                setQuery(res.contents);
+                setData(res.contents);
                 setLoading(false);
             } catch (error) {
                 seError(true);
             }
 
         })
-
-    }
-
-    useEffect(() => {
-
-    }, [])
+    }, [search])
     return (
         <div>
 
@@ -57,7 +58,7 @@ function Navbar() {
             <Flex zIndex={'10'} width={'100%'} position={'fixed'} bg='#0E0E0F' p='12px 25px' minWidth='max-content' alignItems='center' >
                 <Box w={'25%'} display='flex' alignItems='center' >
                     <HiOutlineBars3 size={'25px'} color='white' />
-                    <Link to='/'>    <Img w={'128px'} h='35px' pl='19px' src="https://youtube-reactjs-clone-123.netlify.app/static/media/yt-logo.d6505fbc930734374cea.png" />
+                    <Link to='/'>    <Img w={'128px'} h='25px' pl='19px' src="https://youtube-reactjs-clone-123.netlify.app/static/media/yt-logo.d6505fbc930734374cea.png" />
                     </Link>
                 </Box>
                 <Box w={'50%'} >
