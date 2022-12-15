@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { AiFillHome } from 'react-icons/ai'
 import { RxVideo } from 'react-icons/rx'
 import { AiOutlineFlag } from "react-icons/ai";
@@ -10,9 +10,12 @@ import { GiDiamondTrophy } from "react-icons/gi";
 import { RiLightbulbLine, RiFeedbackLine } from "react-icons/ri";
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
 import { Divider } from '@chakra-ui/react'
+import { Context } from '../Context/ContextApi';
 function LeftMenuBar() {
+    const { setLoading, setData, search, setSearch, seError } = useContext(Context);
+
     const Category = (e) => {
-        console.log(e);
+        setSearch(e);
     }
 //  var data=[
 //     {"title":"Name"},
@@ -29,7 +32,7 @@ function LeftMenuBar() {
                 margin: '0px 10px 0px 10px'
             }}>
                 <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} value="Home"
-                    onClick={() => Category("Home")} >
+                    onClick={() => Category("New")} >
                     <AiFillHome size='25px' />
                     <Text pl='15px'> Home</Text>
                 </Box>

@@ -1,47 +1,36 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import { Context } from '../Context/ContextApi';
+import { fetchData } from '../Utils/Api';
+import ReactPlayer from 'react-player'
+import { Box, Link, Img, Flex, Text } from '@chakra-ui/react';
+import { abbreviateNumber } from "js-abbreviation-number";
+import { BsFillCheckCircleFill } from 'react-icons/bs'
+import '../Styles/video.css'
+import Recomendation from './Recommendation';
 function Video() {
-
+    const { loading, setLoading } = useContext(Context);
+    const [recomendation, setrecomendation] = useState([]);
+    const { id } = useParams();
+  
     return (
-        <div>
-            {
-                Devi.map((ele) => {
-                    <div className="flex flex-col mb-8">
-                        <div className="relative h-50 md:h-50 md:rounded-xl overflow-hidden">
-                            <img className='h-full w-full object-cover' src={video?.thumbnails[0]?.url} alt="" />
-                            {video.lengthSeconds && (
-                                <VideoLength time={video?.lengthSeconds} />
-                            )}
-                        </div>
-                        <div className="flex text-white mt-3">
-                            <div className="flex items-start">
-                                <div className="flex h-9 w-9 rounded-full overflow-hidden">
-                                    <img className='h-full w-full object-cover' src={video?.author?.avatar[0]?.url} alt="channel" />
-                                </div>
-                            </div>
-                            <div className="flex flex-col ml-3 overflow-hidden">
-                                <span className='text-sm font-bold line-clamp-2'>
-                                    {video?.title}
-                                </span>
-                                <span className='text-[12px] font-semibold mt-2 text-white/[0.7] flex items-center'>
-                                    {video?.author?.title}
-                                    {video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
-                                        <BsFillCheckCircleFill className='text-white/[0.5] text-[12px] ml-1' />
-                                    )}
-                                </span>
-                                <div className="flex text-[12px] font-semibold text-white/[0.7] truncate overflow-hidden">
-                                    <span>{`${abbreviateNumber(video?.stats?.views, 2)} views`}</span>
-                                    <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1">.</span>
-                                    <span className="truncate">
-                                        {video?.publishedTimeText}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                })
-            }
-        </div>
+
+        <Box display={'flex'} ml={'30px'} pt='70px' w={'90%'} m='auto' justifyContent={'space-around'}>
+            <Box width={'60%'} position='sticky' height='500px' >
+                <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`}
+                    controls
+                    width="100%"
+                    height={"100%"}
+                    style={{ backgroundColor: "#000000" }}
+                    playing={true}
+                /></Box>
+            <Box width="30%" className='rec_parent' position={'sticky'} overflow='scroll' h={'100vh'} >
+                <Recomendation/>
+
+            </Box>
+        </Box>
     );
 }
 
