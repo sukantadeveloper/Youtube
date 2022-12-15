@@ -1,8 +1,8 @@
 import { Box, Text } from '@chakra-ui/react';
 import React from 'react';
-import {AiFillHome} from 'react-icons/ai'
-import{RxVideo} from 'react-icons/rx'
-import {  AiOutlineFlag } from "react-icons/ai";
+import { AiFillHome } from 'react-icons/ai'
+import { RxVideo } from 'react-icons/rx'
+import { AiOutlineFlag } from "react-icons/ai";
 import { MdLocalFireDepartment, MdLiveTv } from "react-icons/md";
 import { CgMusicNote } from "react-icons/cg";
 import { FiFilm } from "react-icons/fi";
@@ -12,56 +12,178 @@ import { GiDiamondTrophy, GiEclipse } from "react-icons/gi";
 import { RiLightbulbLine, RiFeedbackLine } from "react-icons/ri";
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
 function LeftMenuBar() {
+    const Category = (e) => {
+        console.log(e);
+    }
+//  var data=[
+//     {"title":"Name"},
+//     {"title":}
+//  ]
+ 
     return (
-        <Box border={'1px solid red'} h='100vh' p={'30px 30px 20px 30px'}>
-            <Box pb={'25px'} display='flex' alignItems={'center'} >
-                <AiFillHome size='25px'/>
-                 <Text pl='15px'> Home</Text>
+        <Box className='parent' w={"20%"} bg='black' border={'1px solid red'} h='100vh' position={'fixed'} overflow='scroll' scrollBehavior={'smooth'} pt='20px' >
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+                <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} value="Home"
+                    onClick={() => Category("Home")} >
+                    <AiFillHome size='25px' />
+                    <Text pl='15px'> Home</Text>
+                </Box>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <RxVideo size={'25px'}/>
-                 <Text pl='15px'> Shorts</Text>
+
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Shorts")}>
+                <RxVideo size={'25px'} />
+                <Text pl='15px'> Shorts</Text>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <MdLocalFireDepartment size={'25px'}/>
-                 <Text pl='15px'> Trending</Text>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <FiFilm size={'25px'}/>
-                 <Text pl='15px'> Films</Text>
+
+            
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Trending")}>
+                <MdLocalFireDepartment size={'25px'} />
+                <Text pl='15px'> Trending</Text>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <MdLiveTv size={'25px'}/>
-                 <Text pl='15px'> Live</Text>
+
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <CgMusicNote size={'25px'}/>
-                 <Text pl='15px'> Music</Text>
+
+
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Films")}>
+                <FiFilm size={'25px'} />
+                <Text pl='15px'> Films</Text>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <RiLightbulbLine size={'25px'}/>
-                 <Text pl='15px'> Learning</Text>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <GiDiamondTrophy size={'25px'}/>
-                 <Text pl='15px'> Sports</Text>
+
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Home")}>
+                <MdLiveTv size={'25px'} />
+                <Text pl='15px'> Live</Text>
             </Box>
-            <hr/>
-            <Box pb={'25px'} display='flex' alignItems={'center'}  pt={'25px'}>
-                <FiSettings size={'25px'}/>
-                 <Text pl='15px'> Seetings</Text>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <AiOutlineFlag size={'25px'}/>
-                 <Text pl='15px'> Report History</Text>
+
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Music")}>
+                <CgMusicNote size={'25px'} />
+                <Text pl='15px'> Music</Text>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <FiHelpCircle size={'25px'}/>
-                 <Text pl='15px'> Help</Text>
             </Box>
-            <Box pb={'25px'} display='flex' alignItems={'center'}>
-                <RiFeedbackLine size={'25px'}/>
-                 <Text pl='15px'> Send FeedBack</Text>
+
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Learning")}>
+                <RiLightbulbLine size={'25px'} />
+                <Text pl='15px'> Learning</Text>
+            </Box>
+            </Box>
+
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}
+            mb='10px'
+            >
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Sports")}>
+                <GiDiamondTrophy size={'25px'} />
+                <Text pl='15px'> Sports</Text>
+            </Box>
+            </Box>
+            <hr />
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                 margin: '10px 10px 0px 10px',
+              
+            }}
+          mt='10px'
+            >
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Home")} >
+                <FiSettings size={'25px'} />
+                <Text pl='15px'> Seetings </Text>
+            </Box>
+            </Box>
+
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Home")}>
+                <AiOutlineFlag size={'25px'} />
+                <Text pl='15px'> Report History </Text>
+            </Box>
+            </Box>
+
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Home")}>
+                <FiHelpCircle size={'25px'} />
+                <Text pl='15px'> Help</Text>
+            </Box>
+            </Box>
+            <Box _hover={{
+                cursor: "pointer",
+                background: "#272727",
+                color: "white",
+                borderRadius: '15px',
+                margin: '0px 10px 0px 10px'
+            }}>
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Home")}>
+                <RiFeedbackLine size={'25px'} />
+                <Text pl='15px'> Send FeedBack </Text>
+            </Box>
             </Box>
         </Box >
     );

@@ -12,10 +12,10 @@ import { IoSearchOutline } from 'react-icons/io5';
 import { BiVideoPlus } from 'react-icons/bi'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { VscAccount } from 'react-icons/vsc'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     const { setLoading, setQuery, seError } = useContext(Context);
-    const [data, setData] = useState([]);
     const va = useRef("");
     function debounce(fn, delay) {
         let id;
@@ -54,11 +54,11 @@ function Navbar() {
         <div>
 
 
-            <Flex width={'100%'} position={'fixed'} bg='#0E0E0F' p='12px 25px' minWidth='max-content' alignItems='center' >
+            <Flex zIndex={'10'} width={'100%'} position={'fixed'} bg='#0E0E0F' p='12px 25px' minWidth='max-content' alignItems='center' >
                 <Box w={'25%'} display='flex' alignItems='center' >
                     <HiOutlineBars3 size={'25px'} color='white' />
-                    <Img w={'128px'} h='35px' pl='19px' src="https://youtube-reactjs-clone-123.netlify.app/static/media/yt-logo.d6505fbc930734374cea.png" />
-
+                    <Link to='/'>    <Img w={'128px'} h='35px' pl='19px' src="https://youtube-reactjs-clone-123.netlify.app/static/media/yt-logo.d6505fbc930734374cea.png" />
+                    </Link>
                 </Box>
                 <Box w={'50%'} >
                     <Flex bg='#121212' display={'flex'} alignItems={'center'} border='1px solid #888989' borderRadius={'25px'} >
