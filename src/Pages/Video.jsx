@@ -12,9 +12,17 @@ import '../Styles/video.css'
 import Recomendation from './Recommendation';
 function Video() {
     const { loading, setLoading } = useContext(Context);
-    const [recomendation, setrecomendation] = useState([]);
+    const [ViewDetails, SetViewDetails] = useState([]);
     const { id } = useParams();
-  
+    useEffect(() => {
+        fetchData(`/video/details/?id=${id}`)
+            .then((res) => {
+                SetViewDetails(res);
+                // console.log(res,"Ayega")
+            })
+    }, [id])
+    console.log(ViewDetails, 'view');
+
     return (
 
         <Box display={'flex'} ml={'30px'} pt='70px' w={'90%'} m='auto' justifyContent={'space-around'}>
@@ -25,9 +33,21 @@ function Video() {
                     height={"100%"}
                     style={{ backgroundColor: "#000000" }}
                     playing={true}
-                /></Box>
+                />
+                <Box border={'1px solid red'} h='155px'>
+
+
+
+                    <Text> {ViewDetails.description}</Text>
+
+
+
+
+                </Box>
+
+            </Box>
             <Box width="30%" className='rec_parent' position={'sticky'} overflow='scroll' h={'100vh'} >
-                <Recomendation/>
+                <Recomendation />
 
             </Box>
         </Box>

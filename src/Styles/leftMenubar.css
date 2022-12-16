@@ -13,3 +13,6 @@
     padding-left: 10px; 
     padding-right: 10px;
 }
+.parent Box:active{
+    color: yellow;
+}

@@ -4,10 +4,11 @@ import { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Context } from '../Context/ContextApi';
 import { fetchData } from '../Utils/Api';
-import { Box,  Img, Flex, Text } from '@chakra-ui/react';
+import { Box, Img, Flex, Text, Stack, Skeleton } from '@chakra-ui/react';
 import { abbreviateNumber } from "js-abbreviation-number";
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 import '../Styles/video.css'
+import VideoLength from '../ExtraElement/VideoLength';
 
 function Recommendation() {
     const { loading, setLoading } = useContext(Context);
@@ -28,15 +29,29 @@ function Recommendation() {
     }, [id])
     return (
         <div>
+
             {
                 recomendation.length > 0 ?
 
                     recomendation.map((ele) => (
-                        <Link to={`/video/${ele.video.videoId}`}>
-                            <Flex key={Math.random()} width={'350px'} _hover={{ cursor: 'pointer' }}>
+                        <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
 
-                                <Img p='10px' borderRadius={'20px'} w='250px' src={ele.video?.thumbnails[0]?.url} alt="" />
-                                <Box>
+                            <Flex width={'350px'} _hover={{ cursor: 'pointer' }} p='5px'>
+
+                                {/* <Img p='10px' borderRadius={'20px'} w='250px' src={ele.video?.thumbnails[0]?.url} alt="" /> */}
+                                <Box
+                                    backgroundImage={ele.video?.thumbnails[0]?.url}
+                                    p='10px' borderRadius={'10px'} w='50%'
+                                    h='90px'
+                                    display='flex'
+                                    justifyContent={'flex-end'}
+                                    alignItems='end'
+                                >
+                                    <VideoLength time={ele.video?.lengthSeconds} />
+
+
+                                </Box>
+                                <Box w='50%'>
                                     <span className='rec_video_title'>{ele.video?.title} </span>
 
                                     <Flex fontSize={'12px'} pl='10px' alignItems={'center'}>
@@ -54,7 +69,39 @@ function Recommendation() {
                         </Link>
 
                     ))
-                    : "Sorry We are not found"
+                    : <Box>  <Stack>
+                        <Skeleton height='20px' />
+                        <Skeleton height='20px' />
+                        <Skeleton height='20px' />
+                        <Skeleton height='20px' />
+                        <Skeleton height='20px' />
+                    </Stack>
+                        <br />
+                        <br />
+                        <Stack>
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                        </Stack>
+                        <br /><br />
+                        <Stack>
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                        </Stack>
+
+                        <br /><br />
+                        <Stack>
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                            <Skeleton height='20px' />
+                        </Stack></Box>
             }
 
 

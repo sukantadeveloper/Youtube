@@ -17,10 +17,7 @@ function LeftMenuBar() {
     const Category = (e) => {
         setSearch(e);
     }
-//  var data=[
-//     {"title":"Name"},
-//     {"title":}
-//  ]
+
  
     return (
         <Box className='parent' w={"20%"} bg='#0E0E0F'  h='100vh' position={'fixed'} overflow='scroll' scrollBehavior={'smooth'} pt='20px' >
@@ -144,7 +141,7 @@ function LeftMenuBar() {
             }}
           mt='10px'
             >
-            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} onClick={() => Category("Home")} >
+            <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} >
                 <FiSettings size={'25px'} />
                 <Text pl='15px'> Seetings </Text>
             </Box>

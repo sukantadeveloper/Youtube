@@ -15,7 +15,7 @@ import { VscAccount } from 'react-icons/vsc'
 import { Link } from 'react-router-dom';
 
 function Navbar() {
-    const { setLoading, setData, search, setSearch, seError } = useContext(Context);
+    const { setLoading, setData, search, setSearch, seError, error } = useContext(Context);
     const va = useRef("");
     function debounce(fn, delay) {
         let id;
@@ -36,21 +36,38 @@ function Navbar() {
         setSearch(va.current.value);
     }
 
+    // useEffect(() => {
+    //     setLoading(true);
+
+    //     fetchData(`search/?q=${search}`).then((res) => {
+    //         try {
+    //             setData(res.contents);
+    //             setLoading(false);
+    //             console.log("try");
+    //         } catch (error) {
+    //             seError(true);
+    //             console.log("catch");
+    //         }
+
+    //     })
+    // }, [search])
+
     useEffect(() => {
         setLoading(true);
-        
-        fetchData(`search/?q=${search}`).then((res) => {
-            try {
+
+        fetchData(`search/?q=${search}`).
+            then((res) => {
                 setData(res.contents);
                 setLoading(false);
                 console.log("try");
-            } catch (error) {
+            })
+            .catch((error) => {
                 seError(true);
                 console.log("catch");
-            }
-
-        })
+            })
     }, [search])
+
+    console.log(error, "error");
     return (
         <div>
 
