@@ -55,7 +55,7 @@ function Home() {
                             width='205px'
                             height='205px'
                         /> </Box> </Flex> :
-                    <Box w='100%'>
+                    <Box w='100%' >
                         {data.length > 0 ?
                             <SimpleGrid columns={[1, 3, 4]} spacing='15px' w='98%' >
                                 {
@@ -65,7 +65,7 @@ function Home() {
 
                                                 <Box
                                                     backgroundImage={ele.video?.thumbnails[0]?.url}
-                                                    p='5px' borderRadius={'20px'} w='100%'
+                                                    p='5px' borderRadius={{ base: '2px', md: '15px', lg: '20px' }} w='100%'
                                                     h={{ base: "200px", md: "150px", lg: "150px" }}
                                                     display='flex'
                                                     justifyContent={'flex-end'}
@@ -76,7 +76,7 @@ function Home() {
 
                                                 </Box>
                                                 <Flex p={'10px'}> <Img borderRadius={'50%'} w='30px' h={'30px'} src={ele.video?.author?.avatar[0]?.url} />
-                                                    <span className='video_title'>{ele.video?.title} </span>
+                                                    <Text fontSize={{ base: '12px', md: '12px', lg: '15px' }} className='video_title'>{ele.video?.title} </Text>
                                                 </Flex>
                                                 <Flex fontSize={'12px'} p='0px 50px 0px 55px' alignItems={'center'}>
                                                     <Text pr={'5px'}>   {ele.video?.author?.title}</Text>
@@ -84,10 +84,18 @@ function Home() {
                                                         <BsFillCheckCircleFill />
                                                     )}
                                                 </Flex>
-                                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' justifyContent={'space-around'}> <Text>{`${abbreviateNumber(ele.video?.stats?.views, 2)} views`}</Text>
-                                                    <Text fontWeight={'bold'}>.</Text>
-                                                    <span> {ele.video?.publishedTimeText}</span></Flex>
-                                            </Box> </Link>
+                                                <Flex maxWidth='330px' fontSize={'12px'} p='0px 50px 0px 55px' justifyContent={'space-around'}> <Text>{`${abbreviateNumber(ele.video?.stats?.views, 2)} views`}</Text>
+
+
+                                                    <Text p="0px 5px 0px 5px" fontWeight={'bold'}>.</Text>
+                                                    <Text> {ele.video?.publishedTimeText}</Text>
+
+                                                </Flex>
+
+
+                                            </Box>
+
+                                        </Link>
 
                                     ))
 
