@@ -14,9 +14,6 @@ function Home() {
     const { data, error, setData, loading } = useContext(Context);
     console.log(data, "q");
     console.log(data, "name");
-    // useEffect(()=>{
-    //     fetchData();
-    // })
 
     if (loading) {
         <Flex h='100vh'>
@@ -43,10 +40,10 @@ function Home() {
 
     return (
         <Box paddingTop={'75px'} display='flex' w='100%'>
-            <Box w={'22%'} pl='15px'>
+            <Box w={{ base: "0%", md: "22%", lg: "22%" }} pl='15px'>
                 <LeftMenuBar />
             </Box>
-            <Box w={'80%'}  >
+            <Box w={{ base: "100%", md: "80%", lg: "80%" }} >
                 {loading ? <Flex h='100vh'>
                     <Box w='90%' margin={'auto'} >
                         <Spinner
@@ -60,17 +57,16 @@ function Home() {
                         /> </Box> </Flex> :
                     <Box w='100%'>
                         {data.length > 0 ?
-                            <SimpleGrid columns={[2, 3, 4]} spacing='10px' w='98%' >
+                            <SimpleGrid columns={[1, 3, 4]} spacing='15px' w='98%' >
                                 {
                                     data.map((ele) => (
                                         <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
                                             <Box width={'100%'} _hover={{ cursor: 'pointer' }}>
 
-                                                {/* <Img p='10px' borderRadius={'20px'} w='100%' src={ele.video?.thumbnails[0]?.url} alt="" /> */}
                                                 <Box
                                                     backgroundImage={ele.video?.thumbnails[0]?.url}
                                                     p='5px' borderRadius={'20px'} w='100%'
-                                                    h='150px'
+                                                    h={{ base: "200px", md: "150px", lg: "150px" }}
                                                     display='flex'
                                                     justifyContent={'flex-end'}
                                                     alignItems='end'
@@ -88,7 +84,7 @@ function Home() {
                                                         <BsFillCheckCircleFill />
                                                     )}
                                                 </Flex>
-                                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' justifyContent={'space-around'}> <span>{`${abbreviateNumber(ele.video?.stats?.views, 2)} views`}</span>
+                                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' justifyContent={'space-around'}> <Text>{`${abbreviateNumber(ele.video?.stats?.views, 2)} views`}</Text>
                                                     <Text fontWeight={'bold'}>.</Text>
                                                     <span> {ele.video?.publishedTimeText}</span></Flex>
                                             </Box> </Link>
