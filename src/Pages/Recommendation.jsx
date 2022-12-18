@@ -35,7 +35,7 @@ function Recommendation() {
 
                     recomendation.map((ele) => (
                         <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
-
+                             {/* big screen */}
                             <Flex display={{ base: "none", md: "flex", lg: "flex" }} width={'350px'} _hover={{ cursor: 'pointer' }} p='5px'>
 
                                 <Box
@@ -64,12 +64,13 @@ function Recommendation() {
                                         <span> {ele.video?.publishedTimeText}</span></Flex>
                                 </Box>
                             </Flex>
+                            {/* mobile view */}
                             <Box  p={'10px'} display={{ base: "block", md: "none", lg: "none" }} width={'100%'} _hover={{ cursor: 'pointer' }}>
 
                                 <Box
                                     backgroundImage={ele.video?.thumbnails[0]?.url}
                                     p='5px' borderRadius={{ base: '2px', md: '15px', lg: '20px' }} w='100%'
-                                    h={{ base: "200px", md: "150px", lg: "150px" }}
+                                    h={{ base: "150px", md: "150px", lg: "150px" }}
                                     display='flex'
                                     justifyContent={'flex-end'}
                                     alignItems='end'

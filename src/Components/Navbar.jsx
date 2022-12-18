@@ -12,12 +12,18 @@ import { IoSearchOutline } from 'react-icons/io5';
 import { BiVideoPlus } from 'react-icons/bi'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { VscAccount } from 'react-icons/vsc'
-import { Link } from 'react-router-dom';
-import {BsFillArrowLeftCircleFill} from 'react-icons/bs'
-import {MdMic} from 'react-icons/md'
+import { Link, Navigate } from 'react-router-dom';
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
+import { MdMic } from 'react-icons/md'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 function Navbar() {
-    const[searchbar,setSearchBar]=useState(false);
+    const [searchbar, setSearchBar] = useState(false);
+    const {
+        transcript,
+        listening,
+        resetTranscript
+    } = useSpeechRecognition();
     const { setLoading, setData, search, setSearch, seError, error } = useContext(Context);
     const va = useRef("");
     function debounce(fn, delay) {
@@ -37,6 +43,8 @@ function Navbar() {
 
     const getdata = () => {
         setSearch(va.current.value);
+        console.log(va.current.value,"Value")
+        return <Navigate to='/'/>
     }
 
 
@@ -56,27 +64,33 @@ function Navbar() {
     }, [search])
 
     console.log(error, "error");
+
+    const record = (e) => {
+        //SpeechRecognition.resetTranscript();
+        SpeechRecognition.startListening({ continuous: true })
+        console.log(transcript);
+    }
     return (
         <div>
 
 
             <Flex zIndex={'10'} width={'100%'} position={'fixed'} bg='#0E0E0F' p='12px 25px' minWidth='max-content' alignItems='center' justifyContent={'space-between'} >
-              {searchbar?"":
-                <Box w={'25%'} display='flex' alignItems='center' >
-                    <Box display={{ base: "none", md: "block", lg: "block" }} >   <HiOutlineBars3 size={'25px'} color='white' /> </Box>
-                    <Link to='/'>    <Img w={{ base: "132px", md: "120px", lg: "128px" }} h={{ base: "20px", md: "20px", lg: "25px" }} pl={{ base: "-10px", md: "17px", lg: "17px" }} src="https://youtube-reactjs-clone-123.netlify.app/static/media/yt-logo.d6505fbc930734374cea.png" />
-                    </Link>
-                </Box>}
-
-                {searchbar?<Box zIndex={'10'} w={'90%'} color='white' display={{ base: "flex", md: "block", lg: "block" }} alignItems='center' justifyContent={'space-between'}>
-                   <BsFillArrowLeftCircleFill size={'20px'} bg='white' onClick={()=>setSearchBar(false)}/>
+                {searchbar ? "" :
+                    <Box w={'25%'} display='flex' alignItems='center' >
+                        <Box display={{ base: "none", md: "block", lg: "block" }} >   <HiOutlineBars3 size={'25px'} color='white' /> </Box>
+                        <Link to='/'>    <Img w={{ base: "132px", md: "120px", lg: "128px" }} h={{ base: "20px", md: "20px", lg: "25px" }} pl={{ base: "-10px", md: "17px", lg: "17px" }} src="https://youtube-reactjs-clone-123.netlify.app/static/media/yt-logo.d6505fbc930734374cea.png" />
+                        </Link>
+                    </Box>}
+                {/* mobile screen */}
+                {searchbar ? <Box zIndex={'10'} w={'90%'} color='white' display={{ base: "flex", md: "block", lg: "block" }} alignItems='center' justifyContent={'space-between'}>
+                    <BsFillArrowLeftCircleFill size={'20px'} bg='white' onClick={() => setSearchBar(false)} />
                     <Flex w='80%' bg='#121212' display={'flex'} alignItems={'center'} border='1px solid #888989' borderRadius={'25px'} >
-                         
+
                         <Input h='40px' border={'none'} borderRadius={'25px 0px 0px 25px'} w='90%' type="text" onChange={handleChnage} ref={va} placeholder='Search' color={'#888888'} fontWeight='400' />
                         <Box _hover={{ cursor: 'pointer' }} borderRadius={'0px 25px 25px 0px'} p='0px 5px 0px 15px' display={'flex'} alignItems={'center'} bg={'#222222'} h='40px' w={'60px'}> <IoSearchOutline size={'20px'} /></Box>
                     </Flex>
-                    <Text> <MdMic size={'22px'}/></Text>
-                </Box>:""}
+                    <Text> <MdMic size={'22px'} onClick={record}  /></Text>
+                </Box> : ""}
 
 
                 <Box w={'50%'} display={{ base: "none", md: "block", lg: "block" }}>
@@ -97,11 +111,11 @@ function Navbar() {
 
                 </Box>
                 {/* mobile screen logo */}
-                {searchbar?"":
-                <Flex w='25%' display={{ base: "flex", md: "none", lg: "none" }} justifyContent='space-between'> 
-                <IoSearchOutline size={'20px'} onClick={()=>setSearchBar(true)}/>
-                  <VscAccount size='20px' />
-                   </Flex>}
+                {searchbar ? "" :
+                    <Flex w='25%' display={{ base: "flex", md: "none", lg: "none" }} justifyContent='space-between'>
+                        <IoSearchOutline size={'20px'} onClick={() => setSearchBar(true)} />
+                        <VscAccount size='20px' />
+                    </Flex>}
             </Flex>
 
         </div>

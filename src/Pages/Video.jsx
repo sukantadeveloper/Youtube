@@ -14,7 +14,7 @@ import {HiDownload} from 'react-icons/hi'
 import '../Styles/video.css'
 import Recomendation from './Recommendation';
 function Video() {
-    const { loading, setLoading } = useContext(Context);
+    const { loading, setLoading ,setSearch} = useContext(Context);
     const [ViewDetails, SetViewDetails] = useState([]);
     const { id } = useParams();
     useEffect(() => {
@@ -29,7 +29,7 @@ function Video() {
     return (
 
         <Box display={{base:"block", md:"flex", lg:"flex"}} ml={'30px'} pt={{base:"35px", md:"75px", md:"75px"}} w={'100%'} m='auto' justifyContent={'space-evenly'}>
-            <Box width={{base:"100%", md:"65%", lg:"65%"}} position={{base:"fixed", md:"static", lg:"sticky"}}  height={{base:"200px", md:"500px", lg:"500px"}} >
+            <Box width={{base:"100%", md:"65%", lg:"65%"}} position={{base:"fixed", md:"static", lg:"sticky"}}  height={{base:"250px", md:"500px", lg:"500px"}} >
                 <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`}
                     controls
                     width="100%"
@@ -86,7 +86,7 @@ function Video() {
                 </Box>
 
             </Box>
-            <Box pt={{base:"310px", md:"0px", lg:"0px"}} overflow='scroll' h='100vh' width={{base:"100%", md:"25%", lg:"25%"}} className='rec_parent' >
+            <Box pt={{base:"340px", md:"0px", lg:"0px"}} overflow='scroll' h='100vh' width={{base:"100%", md:"25%", lg:"25%"}} className='rec_parent' >
                 <Recomendation />
 
             </Box>
