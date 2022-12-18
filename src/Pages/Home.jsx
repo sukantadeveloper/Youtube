@@ -39,7 +39,8 @@ function Home() {
     console.log(loading);
     if (error) {
         return (
-            <Img h='100vh' src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bc70c43b-aeca-448a-a158-0f8e7c281a0d/dceqwb1-a75b8ac9-8340-45bb-8049-4883b81baa3c.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2JjNzBjNDNiLWFlY2EtNDQ4YS1hMTU4LTBmOGU3YzI4MWEwZFwvZGNlcXdiMS1hNzViOGFjOS04MzQwLTQ1YmItODA0OS00ODgzYjgxYmFhM2MuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Xmt2peugw4IY64xOXTkc3Q1IFo5T861ncwbHc1E4rhM" />
+            <Box bg={'white'} h='100vh' display={'grid'} placeContent='center'>  
+            <Img h='50vh' src="https://my.tradeinvalet.com/Content/Images/Error_Image.gif" /> </Box>
 
         )
 
@@ -69,11 +70,11 @@ function Home() {
                                 {
                                     data.map((ele) => (
                                         <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
-                                            <Box width={'100%'} _hover={{ cursor: 'pointer' }}>
+                                            <Box width={'97%'} m='auto' _hover={{ cursor: 'pointer' }}  >
 
                                                 <Box
                                                     backgroundImage={ele.video?.thumbnails[0]?.url}
-                                                    p='5px' borderRadius={{ base: '2px', md: '15px', lg: '20px' }} w='100%'
+                                                    p='5px' borderRadius={{ base: '2px', md: '15px', lg: '15px' }} w='100%'
                                                     h={{ base: "170px", md: "150px", lg: "150px" }}
                                                     display='flex'
                                                     justifyContent={'flex-end'}
@@ -86,13 +87,15 @@ function Home() {
                                                 <Flex p={'10px'}> <Img borderRadius={'50%'} w='30px' h={'30px'} src={ele.video?.author?.avatar[0]?.url} />
                                                     <Text fontSize={{ base: '12px', md: '12px', lg: '15px' }} className='video_title'>{ele.video?.title} </Text>
                                                 </Flex>
-                                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' alignItems={'center'}>
+                                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' alignItems={'center'}  w='max-content' m='auto'>
                                                     <Text pr={'5px'}>   {ele.video?.author?.title}</Text>
                                                     {ele.video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
                                                         <BsFillCheckCircleFill />
                                                     )}
                                                 </Flex>
-                                                <Flex maxWidth='330px' fontSize={'12px'} p='0px 50px 0px 55px' justifyContent={'space-around'}> <Text>{`${abbreviateNumber(ele.video?.stats?.views, 2)} views`}</Text>
+                                                <Flex  fontSize={'12px'} w='max-content' justifyContent={'space-around'} m='auto'>
+                                                    
+                                                     <Text>{`${abbreviateNumber(ele.video?.stats?.views, 2)} views`}</Text>
 
 
                                                     <Text p="0px 5px 0px 5px" fontWeight={'bold'}>.</Text>

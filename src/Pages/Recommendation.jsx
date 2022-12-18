@@ -65,12 +65,13 @@ function Recommendation() {
                                 </Box>
                             </Flex>
                             {/* mobile view */}
-                            <Box  p={'10px'} display={{ base: "block", md: "none", lg: "none" }} width={'100%'} _hover={{ cursor: 'pointer' }}>
+                            <Box    p={'10px'} display={{ base: "block", md: "none", lg: "none" }} width={'100%'} _hover={{ cursor: 'pointer' }}>
 
-                                <Box
+                                {/* <Box
+                              
                                     backgroundImage={ele.video?.thumbnails[0]?.url}
                                     backgroundRepeat='no-repeat'
-                                    backgroundSize="100%"
+                                    backgroundSize="190%"
                                     p='5px' borderRadius={{ base: '2px', md: '15px', lg: '20px' }} w='300px'
                                     h={{ base: "150px", md: "150px", lg: "150px" }}
                                     display='flex'
@@ -80,7 +81,8 @@ function Recommendation() {
                                     <VideoLength time={ele.video?.lengthSeconds} />
 
 
-                                </Box>
+                                </Box> */}
+                                <Img w='360px'  h={{ base: "170px", md: "150px", lg: "150px" }} m={'auto'} src={ele.video?.thumbnails[0]?.url} />
                                 <Flex  p={'10px 10px 2px 5px '}> <Img borderRadius={'50%'} w='30px' h={'30px'} src={ele.video?.author?.avatar[0]?.url} />
                                     <Text fontSize={{ base: '12px', md: '12px', lg: '15px' }} className='video_title'>{ele.video?.title} </Text>
                                 </Flex>

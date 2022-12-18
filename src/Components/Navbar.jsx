@@ -74,7 +74,7 @@ function Navbar() {
         <div>
 
 
-            <Flex zIndex={'10'} width={'100%'} position={'fixed'} bg='#0E0E0F' p='12px 25px' minWidth='max-content' alignItems='center' justifyContent={'space-between'} >
+            <Flex zIndex={'10'} width={'99%'} position={'fixed'} bg='#0E0E0F' p='12px 25px'  alignItems='center' justifyContent={'space-between'} >
                 {searchbar ? "" :
                     <Box w={'25%'} display='flex' alignItems='center' >
                         <Box display={{ base: "none", md: "block", lg: "block" }} >   <HiOutlineBars3 size={'25px'} color='white' /> </Box>
