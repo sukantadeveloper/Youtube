@@ -69,7 +69,9 @@ function Recommendation() {
 
                                 <Box
                                     backgroundImage={ele.video?.thumbnails[0]?.url}
-                                    p='5px' borderRadius={{ base: '2px', md: '15px', lg: '20px' }} w='100%'
+                                    backgroundRepeat='no-repeat'
+                                    backgroundSize="100%"
+                                    p='5px' borderRadius={{ base: '2px', md: '15px', lg: '20px' }} w='300px'
                                     h={{ base: "150px", md: "150px", lg: "150px" }}
                                     display='flex'
                                     justifyContent={'flex-end'}
