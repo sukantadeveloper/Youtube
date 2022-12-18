@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "homepage": "https://sukantad.github.io/Youtube/",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.4.3",
