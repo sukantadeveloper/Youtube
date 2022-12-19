@@ -11,14 +11,14 @@ import { RiShareForwardLine } from 'react-icons/ri'
 import {HiDownload} from 'react-icons/hi'
 import '../Styles/video.css'
 import Recomendation from './Recommendation';
+import { useDispatch, useSelector } from 'react-redux';
+import { viewDetailsFetch } from '../Redux/Action';
 function Video() {
-    const [ViewDetails, SetViewDetails] = useState([]);
+   const {ViewDetails}=useSelector((state)=>state.viewState)
+    const dispatch=useDispatch();
     const { id } = useParams();
     useEffect(() => {
-        fetchData(`/video/details/?id=${id}`)
-            .then((res) => {
-                SetViewDetails(res);
-            })
+        dispatch(viewDetailsFetch(id));
     }, [id])
 
     return (
