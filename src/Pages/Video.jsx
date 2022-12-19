@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Context } from '../Context/ContextApi';
 import { fetchData } from '../Utils/Api';
 import ReactPlayer from 'react-player'
 import { Box, Link, Img, Flex, Text } from '@chakra-ui/react';
@@ -14,17 +12,14 @@ import {HiDownload} from 'react-icons/hi'
 import '../Styles/video.css'
 import Recomendation from './Recommendation';
 function Video() {
-    const { loading, setLoading ,setSearch} = useContext(Context);
     const [ViewDetails, SetViewDetails] = useState([]);
     const { id } = useParams();
     useEffect(() => {
         fetchData(`/video/details/?id=${id}`)
             .then((res) => {
                 SetViewDetails(res);
-                // console.log(res,"Ayega")
             })
     }, [id])
-    console.log(ViewDetails, 'view');
 
     return (
 

@@ -1,27 +1,17 @@
 import { Box, Center, Flex, Grid, GridItem, Img, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 import React from 'react';
-import { useContext } from 'react';
 import LeftMenuBar from '../Components/LeftMenuBar';
-import { Context, loading } from '../Context/ContextApi';
 import { abbreviateNumber } from "js-abbreviation-number";
 import { BsFillCheckCircleFill } from 'react-icons/bs'
 import '../Styles/leftMenubar.css'
-import { useEffect } from 'react';
-import { RxVideo } from 'react-icons/rx'
-import { AiFillHome } from "react-icons/ai";
-import { fetchData } from '../Utils/Api';
 import { Link } from 'react-router-dom';
-import { FiFilm } from 'react-icons/fi';
-import { MdLocalFireDepartment } from 'react-icons/md';
 import VideoLength from '../ExtraElement/VideoLength';
+import { useDispatch, useSelector } from 'react-redux';
 function Home() {
-    const { data, error, setSearch, setData, loading } = useContext(Context);
-    console.log(data, "q");
-    console.log(data, "name");
-
-    const Category = (e) => {
-        setSearch(e);
-    }
+    const {loading, data,error}=useSelector((state)=>state.video);
+    // const {setsearch}=useSelector((state)=>state.searchState)
+   const dispatch=useDispatch();
+   
 
     if (loading) {
         <Flex h='100vh'>
@@ -36,7 +26,6 @@ function Home() {
                     height='205px'
                 /> </Box> </Flex>
     }
-    console.log(loading);
     if (error) {
         return (
             <Box bg={'white'} h='100vh' display={'grid'} placeContent='center'>  
@@ -48,11 +37,11 @@ function Home() {
 
 
     return (
-        <Box paddingTop={'75px'} display='flex' w='100%'>
+        <Box paddingTop={'75px'} display='flex' w='100%' >
             <Box w={{ base: "0%", md: "22%", lg: "22%" }} >
                 <LeftMenuBar />
             </Box>
-            <Box w={{ base: "100%", md: "80%", lg: "80%" }} >
+            <Box w={{ base: "100%", md: "80%", lg: "80%" }} m='auto' >
                 {loading ? <Flex h='100vh'>
                     <Box w='90%' margin={'auto'} >
                         <Spinner
@@ -66,7 +55,7 @@ function Home() {
                         /> </Box> </Flex> :
                     <Box w='100%'>
                         {data.length > 0 ?
-                            <SimpleGrid columns={[1, 3, 4]} spacing='15px' w='98%' >
+                            <SimpleGrid columns={[1, 3,3, 4]} spacing='15px' w='99%' >
                                 {
                                     data.map((ele) => (
                                         <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>

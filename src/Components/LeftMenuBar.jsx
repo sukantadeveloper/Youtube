@@ -10,12 +10,13 @@ import { GiDiamondTrophy } from "react-icons/gi";
 import { RiLightbulbLine, RiFeedbackLine } from "react-icons/ri";
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
 import { Divider } from '@chakra-ui/react'
-import { Context } from '../Context/ContextApi';
+import { useDispatch } from 'react-redux';
+import { updateSearch } from '../Redux/Action';
 function LeftMenuBar() {
-    const { setLoading, setData, search, setSearch, seError } = useContext(Context);
-
+  const dispatch=useDispatch();
     const Category = (e) => {
-        setSearch(e);
+        dispatch(updateSearch("hello world")) ;
+     
     }
 
  

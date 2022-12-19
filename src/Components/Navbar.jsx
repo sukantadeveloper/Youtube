@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
-import { Context } from '../Context/ContextApi';
 import '../Styles/navbar.css'
 import { fetchData } from '../Utils/Api';
 import { HiOutlineBars3 } from 'react-icons/hi2';
@@ -16,15 +15,18 @@ import { Link, Navigate } from 'react-router-dom';
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 import { MdMic } from 'react-icons/md'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { useDispatch, useSelector } from 'react-redux';
+import { displayData, updateSearch } from '../Redux/Action';
 
 function Navbar() {
+    const { loading, data } = useSelector((state) => state.video);
+    const { setsearch } = useSelector((state) => state.searchState);
     const [searchbar, setSearchBar] = useState(false);
     const {
         transcript,
         listening,
         resetTranscript
     } = useSpeechRecognition();
-    const { setLoading, setData, search, setSearch, seError, error } = useContext(Context);
     const va = useRef("");
     function debounce(fn, delay) {
         let id;
@@ -42,39 +44,29 @@ function Navbar() {
 
 
     const getdata = () => {
-        setSearch(va.current.value);
-        console.log(va.current.value,"Value")
-        return <Navigate to='/'/>
+        dispatch(updateSearch(va.current.value));
+
+        return <Navigate to='/' />
     }
 
 
+
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        setLoading(true);
+        dispatch(displayData(setsearch));
 
-        fetchData(`search/?q=${search}`).
-            then((res) => {
-                setData(res.contents);
-                setLoading(false);
-                console.log("try");
-            })
-            .catch((error) => {
-                seError(true);
-                console.log("catch");
-            })
-    }, [search])
+    }, [setsearch])
 
-    console.log(error, "error");
-
+    console.log(setsearch, "data");
     const record = (e) => {
-        //SpeechRecognition.resetTranscript();
         SpeechRecognition.startListening({ continuous: true })
-        console.log(transcript);
     }
     return (
         <div>
 
 
-            <Flex zIndex={'10'} width={'99%'} position={'fixed'} bg='#0E0E0F' p='12px 25px'  alignItems='center' justifyContent={'space-between'} >
+            <Flex zIndex={'10'} width={'99%'} position={'fixed'} bg='#0E0E0F' p='12px 25px' alignItems='center' justifyContent={'space-between'} >
                 {searchbar ? "" :
                     <Box w={'25%'} display='flex' alignItems='center' >
                         <Box display={{ base: "none", md: "block", lg: "block" }} >   <HiOutlineBars3 size={'25px'} color='white' /> </Box>
@@ -82,14 +74,14 @@ function Navbar() {
                         </Link>
                     </Box>}
                 {/* mobile screen */}
-                {searchbar ? <Box zIndex={'10'} w={'90%'} color='white' display={{ base: "flex", md: "block", lg: "block" }} alignItems='center' justifyContent={'space-between'}>
+                {searchbar ? <Box zIndex={'10'} w={'99%'} color='white' display={{ base: "flex", md: "block", lg: "block" }} alignItems='center' justifyContent={'space-between'}>
                     <BsFillArrowLeftCircleFill size={'20px'} bg='white' onClick={() => setSearchBar(false)} />
                     <Flex w='80%' bg='#121212' display={'flex'} alignItems={'center'} border='1px solid #888989' borderRadius={'25px'} >
 
                         <Input h='40px' border={'none'} borderRadius={'25px 0px 0px 25px'} w='90%' type="text" onChange={handleChnage} ref={va} placeholder='Search' color={'#888888'} fontWeight='400' />
                         <Box _hover={{ cursor: 'pointer' }} borderRadius={'0px 25px 25px 0px'} p='0px 5px 0px 15px' display={'flex'} alignItems={'center'} bg={'#222222'} h='40px' w={'60px'}> <IoSearchOutline size={'20px'} /></Box>
                     </Flex>
-                    <Text> <MdMic size={'22px'} onClick={record}  /></Text>
+                    <Text> <MdMic size={'22px'} onClick={record} /></Text>
                 </Box> : ""}
 
 

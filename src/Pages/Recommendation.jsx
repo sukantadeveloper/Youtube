@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Context } from '../Context/ContextApi';
 import { fetchData } from '../Utils/Api';
 import { Box, Img, Flex, Text, Stack, Skeleton } from '@chakra-ui/react';
 import { abbreviateNumber } from "js-abbreviation-number";
@@ -11,15 +9,14 @@ import '../Styles/video.css'
 import VideoLength from '../ExtraElement/VideoLength';
 
 function Recommendation() {
-    const { loading, setLoading } = useContext(Context);
     const [recomendation, setrecomendation] = useState([]);
     const { id } = useParams();
     const fetchRecomendation = () => {
-        setLoading(true);
+     //   setLoading(true);
         fetchData(`/video/related-contents/?id=${id}`)
             .then((res) => {
                 setrecomendation(res.contents);
-                setLoading(false);
+             //   setLoading(false);
             }).catch((err) => {
 
             })
