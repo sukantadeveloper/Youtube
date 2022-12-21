@@ -42,9 +42,10 @@ export const updateSearch=(data)=>(dispatch)=>{
 }
 
 export const viewDetailsFetch = (id) => (dispatch) => {
-  fetchData(`/video/details/?id=${id}`)
+  fetchData(`video/details/?id=${id}`)
   .then((res) => {
     dispatch(viewDetailsFun(res));
+  console.log(res,"Responce")
   })
     .catch((error) => {
    

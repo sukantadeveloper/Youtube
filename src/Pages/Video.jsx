@@ -20,7 +20,6 @@ function Video() {
     useEffect(() => {
         dispatch(viewDetailsFetch(id));
     }, [id])
-
     return (
 
         <Box display={{base:"block", md:"flex", lg:"flex"}} ml={'30px'} pt={{base:"35px", md:"75px", md:"75px"}} w={'100%'} m='auto' justifyContent={'space-evenly'}>

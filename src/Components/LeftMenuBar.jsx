@@ -21,7 +21,7 @@ function LeftMenuBar() {
 
  
     return (
-        <Box className='parent' w={"20%"} display={{base:"none", md:"block", lg:"block"}} bg='#0E0E0F'  h='100vh' position={'fixed'} overflow='scroll' scrollBehavior={'smooth'} pt='20px' >
+        <Box className='parent' w={"15%"} display={{base:"none", md:"block", lg:"block"}} bg='#0E0E0F'  h='100vh' position={'fixed'} overflow='scroll' scrollBehavior={'smooth'} pt='20px' >
             <Box _hover={{
                 cursor: "pointer",
                 background: "#272727",

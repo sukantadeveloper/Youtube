@@ -13,9 +13,10 @@ function Recommendation() {
     const { id } = useParams();
     const fetchRecomendation = () => {
      //   setLoading(true);
-        fetchData(`/video/related-contents/?id=${id}`)
+        fetchData(`video/related-contents/?id=${id}`)
             .then((res) => {
                 setrecomendation(res.contents);
+               console.log(res.contents);
              //   setLoading(false);
             }).catch((err) => {
 

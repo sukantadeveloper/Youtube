@@ -37,11 +37,11 @@ function Home() {
 
 
     return (
-        <Box paddingTop={'75px'} display='flex' w='100%' >
-            <Box w={{ base: "0%", md: "22%", lg: "22%" }} >
+        <Box paddingTop={'75px'} display='flex' w='99%' >
+            <Box w={{ base: "0%", md: "20%", lg: "20%" }} >
                 <LeftMenuBar />
             </Box>
-            <Box w={{ base: "100%", md: "80%", lg: "80%" }} m='auto' >
+            <Box w={{ base: "100%", md: "80%", lg: "80%" }} m='auto'    >
                 {loading ? <Flex h='100vh'>
                     <Box w='90%' margin={'auto'} >
                         <Spinner
