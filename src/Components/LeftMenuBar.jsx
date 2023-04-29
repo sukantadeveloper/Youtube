@@ -21,7 +21,7 @@ function LeftMenuBar() {
 
  
     return (
-        <Box className='parent' w={"15%"} display={{base:"none", md:"block", lg:"block"}} bg='#0E0E0F'  h='100vh' position={'fixed'} overflow='scroll' scrollBehavior={'smooth'} pt='20px' >
+        <Box className='parent'w={{ base: "0%", md: "25%", lg: "20%" }} display={{base:"none", md:"block", lg:"block"}} bg='#0E0E0F'  h='100vh' position={'fixed'} overflow='scroll' scrollBehavior={'smooth'} pt='20px' >
             <Box _hover={{
                 cursor: "pointer",
                 background: "#272727",
@@ -144,7 +144,7 @@ function LeftMenuBar() {
             >
             <Box p={'10px 10px 10px 30px'} display='flex' alignItems={'center'} >
                 <FiSettings size={'25px'} />
-                <Text pl='15px'> Seetings </Text>
+                <Text pl='15px'> Settings </Text>
             </Box>
             </Box>
 

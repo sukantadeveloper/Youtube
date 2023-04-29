@@ -12,12 +12,12 @@ function Recommendation() {
     const [recomendation, setrecomendation] = useState([]);
     const { id } = useParams();
     const fetchRecomendation = () => {
-     //   setLoading(true);
+        //   setLoading(true);
         fetchData(`video/related-contents/?id=${id}`)
             .then((res) => {
                 setrecomendation(res.contents);
-               console.log(res.contents);
-             //   setLoading(false);
+                console.log(res.contents);
+                //   setLoading(false);
             }).catch((err) => {
 
             })
@@ -32,8 +32,8 @@ function Recommendation() {
                 recomendation.length > 0 ?
 
                     recomendation.map((ele) => (
-                        <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
-                             {/* big screen */}
+                        <> { ele.video?.thumbnails[0]?.url?  <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
+                            {/* big screen */}
                             <Flex display={{ base: "none", md: "flex", lg: "flex" }} width={'350px'} _hover={{ cursor: 'pointer' }} p='5px'>
 
                                 <Box
@@ -51,7 +51,7 @@ function Recommendation() {
                                 <Box w='50%'>
                                     <span className='rec_video_title'>{ele.video?.title} </span>
 
-                                    <Flex fontSize={'12px'} pl='10px' alignItems={'center'}  w='max-content' m='auto'>
+                                    <Flex fontSize={'12px'} pl='10px' alignItems={'center'} w='max-content' m='auto'>
                                         <Text pr={'5px'}>   {ele.video?.author?.title}</Text>
                                         {ele.video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
                                             <BsFillCheckCircleFill />
@@ -63,7 +63,7 @@ function Recommendation() {
                                 </Box>
                             </Flex>
                             {/* mobile view */}
-                            <Box    p={'10px'} display={{ base: "block", md: "none", lg: "none" }} width={'100%'} _hover={{ cursor: 'pointer' }}>
+                            <Box p={'10px'} display={{ base: "block", md: "none", lg: "none" }} width={'100%'} _hover={{ cursor: 'pointer' }}>
 
                                 {/* <Box
                               
@@ -80,11 +80,11 @@ function Recommendation() {
 
 
                                 </Box> */}
-                                <Img w='360px'  h={{ base: "170px", md: "150px", lg: "150px" }} m={'auto'} src={ele.video?.thumbnails[0]?.url} />
-                                <Flex  p={'10px 10px 2px 5px '}> <Img borderRadius={'50%'} w='30px' h={'30px'} src={ele.video?.author?.avatar[0]?.url} />
+                                <Img w='360px' h={{ base: "170px", md: "150px", lg: "150px" }} m={'auto'} src={ele.video?.thumbnails[0]?.url} />
+                                <Flex p={'10px 10px 2px 5px '}> <Img borderRadius={'50%'} w='30px' h={'30px'} src={ele.video?.author?.avatar[0]?.url} />
                                     <Text fontSize={{ base: '12px', md: '12px', lg: '15px' }} className='video_title'>{ele.video?.title} </Text>
                                 </Flex>
-                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' alignItems={'center'}  w='max-content' m='auto'>
+                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' alignItems={'center'} w='max-content' m='auto'>
                                     <Text pr={'5px'}>   {ele.video?.author?.title}</Text>
                                     {ele.video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
                                         <BsFillCheckCircleFill />
@@ -101,7 +101,7 @@ function Recommendation() {
 
                             </Box>
 
-                        </Link>
+                        </Link> :""}</>
 
                     ))
                     : <Box>  <Stack>

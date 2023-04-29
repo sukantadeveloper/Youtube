@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 import VideoLength from '../ExtraElement/VideoLength';
 import { useDispatch, useSelector } from 'react-redux';
 function Home() {
-    const {loading, data,error}=useSelector((state)=>state.video);
+    const { loading, data, error } = useSelector((state) => state.video);
     // const {setsearch}=useSelector((state)=>state.searchState)
-   const dispatch=useDispatch();
-   
+    const dispatch = useDispatch();
+
 
     if (loading) {
         <Flex h='100vh'>
@@ -28,8 +28,8 @@ function Home() {
     }
     if (error) {
         return (
-            <Box bg={'white'} h='100vh' display={'grid'} placeContent='center'>  
-            <Img h='50vh' src="https://my.tradeinvalet.com/Content/Images/Error_Image.gif" /> </Box>
+            <Box bg={'white'} h='100vh' display={'grid'} placeContent='center'>
+                <Img h='50vh' src="https://my.tradeinvalet.com/Content/Images/Error_Image.gif" /> </Box>
 
         )
 
@@ -38,10 +38,10 @@ function Home() {
 
     return (
         <Box paddingTop={'75px'} display='flex' w='99%' >
-            <Box w={{ base: "0%", md: "20%", lg: "20%" }} >
+            <Box w={{ base: "0%", md: "25%", lg: "20%" }} >
                 <LeftMenuBar />
             </Box>
-            <Box w={{ base: "100%", md: "80%", lg: "80%" }} m='auto'    >
+            <Box w={{ base: "100%", md: "70%", lg: "80%" }} m='auto'    >
                 {loading ? <Flex h='100vh'>
                     <Box w='90%' margin={'auto'} >
                         <Spinner
@@ -55,10 +55,12 @@ function Home() {
                         /> </Box> </Flex> :
                     <Box w='100%'>
                         {data.length > 0 ?
-                            <SimpleGrid columns={[1, 3,3, 4]} spacing='15px' w='99%' >
+                            <SimpleGrid columns={[1, 2, 2, 4]} spacing='15px' >
                                 {
                                     data.map((ele) => (
-                                        <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
+                                        <> 
+                                    { ele.video?.thumbnails[0]?.url? 
+                                         <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
                                             <Box width={'97%'} m='auto' _hover={{ cursor: 'pointer' }}  >
 
                                                 <Box
@@ -76,15 +78,15 @@ function Home() {
                                                 <Flex p={'10px'}> <Img borderRadius={'50%'} w='30px' h={'30px'} src={ele.video?.author?.avatar[0]?.url} />
                                                     <Text fontSize={{ base: '12px', md: '12px', lg: '15px' }} className='video_title'>{ele.video?.title} </Text>
                                                 </Flex>
-                                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' alignItems={'center'}  w='max-content' m='auto'>
+                                                <Flex fontSize={'12px'} p='0px 50px 0px 55px' alignItems={'center'} w='max-content' m='auto'>
                                                     <Text pr={'5px'}>   {ele.video?.author?.title}</Text>
                                                     {ele.video?.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
                                                         <BsFillCheckCircleFill />
                                                     )}
                                                 </Flex>
-                                                <Flex  fontSize={'12px'} w='max-content' justifyContent={'space-around'} m='auto'>
-                                                    
-                                                     <Text>{`${abbreviateNumber(ele.video?.stats?.views, 2)} views`}</Text>
+                                                <Flex fontSize={'12px'} w='max-content' justifyContent={'space-around'} m='auto'>
+
+                                                    <Text>{`${abbreviateNumber(ele.video?.stats?.views, 2)} views`}</Text>
 
 
                                                     <Text p="0px 5px 0px 5px" fontWeight={'bold'}>.</Text>
@@ -95,7 +97,7 @@ function Home() {
 
                                             </Box>
 
-                                        </Link>
+                                        </Link> :"" }</>
 
                                     ))
 

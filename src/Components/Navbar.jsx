@@ -28,20 +28,34 @@ function Navbar() {
         resetTranscript
     } = useSpeechRecognition();
     const va = useRef("");
-    function debounce(fn, delay) {
-        let id;
-        return function () {
-            clearTimeout(id);
-            id = setTimeout(() => {
-                fn();
-            }, delay)
+    // function debounce(fn, delay) {
+    //     let id;
+    //     return function () {
+    //         clearTimeout(id);
+    //         id = setTimeout(() => {
+    //             fn();
+    //         }, delay)
+    //     }
+    // }
+
+    const handleChnage = (x => {
+
+
+    })
+
+    const handleClick = () => {
+        if (va.current.value) {
+            getdata();
         }
     }
+    const handlepress = (e) => {
+        if (va.current.value) {
+            if (e.key == "Enter") {
+                getdata();
+            }
+        }
 
-    const handleChnage = debounce(x => {
-        getdata();
-    }, 1000)
-
+    }
 
     const getdata = () => {
         dispatch(updateSearch(va.current.value));
@@ -60,7 +74,7 @@ function Navbar() {
 
     console.log(setsearch, "data");
     const record = (e) => {
-        SpeechRecognition.startListening({ continuous: true })
+       // SpeechRecognition.startListening({ continuous: true })
     }
     return (
         <div>
@@ -79,7 +93,7 @@ function Navbar() {
                     <Flex w='80%' bg='#121212' display={'flex'} alignItems={'center'} border='1px solid #888989' borderRadius={'25px'} >
 
                         <Input h='40px' border={'none'} borderRadius={'25px 0px 0px 25px'} w='90%' type="text" onChange={handleChnage} ref={va} placeholder='Search' color={'#888888'} fontWeight='400' />
-                        <Box _hover={{ cursor: 'pointer' }} borderRadius={'0px 25px 25px 0px'} p='0px 5px 0px 15px' display={'flex'} alignItems={'center'} bg={'#222222'} h='40px' w={'60px'}> <IoSearchOutline size={'20px'} /></Box>
+                        <Box _hover={{ cursor: 'pointer' }} onClick={handleClick} borderRadius={'0px 25px 25px 0px'} p='0px 5px 0px 15px' display={'flex'} alignItems={'center'} bg={'#222222'} h='40px' w={'60px'}> <IoSearchOutline size={'20px'} /></Box>
                     </Flex>
                     <Text> <MdMic size={'22px'} onClick={record} /></Text>
                 </Box> : ""}
@@ -88,8 +102,8 @@ function Navbar() {
                 <Box w={'50%'} display={{ base: "none", md: "block", lg: "block" }}>
                     <Flex bg='#121212' display={'flex'} alignItems={'center'} border='1px solid #888989' borderRadius={'25px'} >
 
-                        <Input h='40px' border={'none'} borderRadius={'25px 0px 0px 25px'} w='90%' type="text" onChange={handleChnage} ref={va} placeholder='Search' color={'#888888'} fontWeight='400' />
-                        <Box _hover={{ cursor: 'pointer' }} borderRadius={'0px 25px 25px 0px'} p='0px 5px 0px 15px' display={'flex'} alignItems={'center'} bg={'#222222'} h='40px' w={'10%'}> <IoSearchOutline size={'20px'} /></Box>
+                        <Input h='40px' border={'none'} borderRadius={'25px 0px 0px 25px'} w='90%' type="text" onChange={handleChnage} onKeyPress={handlepress} ref={va} placeholder='Search' color={'#888888'} fontWeight='400' />
+                        <Box _hover={{ cursor: 'pointer' }} onClick={handleClick} borderRadius={'0px 25px 25px 0px'} p='0px 5px 0px 15px' display={'flex'} alignItems={'center'} bg={'#222222'} h='40px' w={'10%'}> <IoSearchOutline size={'20px'} /></Box>
                     </Flex>
                 </Box>
 
