@@ -16,4 +16,4 @@
   ## Video Player Page
   <img src="./ReadmeImages/video.png">
 
-  <"Thank You">
+  🙏 Thank You 
