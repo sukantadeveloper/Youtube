@@ -58,7 +58,7 @@ function Home() {
                             <SimpleGrid columns={[1, 2, 2, 4]} spacing='15px' >
                                 {
                                     data.map((ele) => (
-                                        <> 
+                                        <Box key={ele.video?.thumbnails[0]?.url + Math.random()}> 
                                     { ele.video?.thumbnails[0]?.url? 
                                          <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
                                             <Box width={'97%'} m='auto' _hover={{ cursor: 'pointer' }}  >
@@ -97,7 +97,7 @@ function Home() {
 
                                             </Box>
 
-                                        </Link> :"" }</>
+                                        </Link> :"" }</Box>
 
                                     ))
 

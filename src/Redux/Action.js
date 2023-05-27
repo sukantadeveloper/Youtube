@@ -29,7 +29,7 @@ export const displayData = (search) => (dispatch) => {
   fetchData(`search/?q=${search}`)
     .then((res) => {
       dispatch(GetSuccess(res.contents));
-      console.log("try");
+    
     })
     .catch((error) => {
       dispatch(GetEror());
@@ -45,7 +45,6 @@ export const viewDetailsFetch = (id) => (dispatch) => {
   fetchData(`video/details/?id=${id}`)
   .then((res) => {
     dispatch(viewDetailsFun(res));
-  console.log(res,"Responce")
   })
     .catch((error) => {
    

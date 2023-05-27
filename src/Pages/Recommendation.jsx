@@ -16,7 +16,6 @@ function Recommendation() {
         fetchData(`video/related-contents/?id=${id}`)
             .then((res) => {
                 setrecomendation(res.contents);
-                console.log(res.contents);
                 //   setLoading(false);
             }).catch((err) => {
 
@@ -32,7 +31,7 @@ function Recommendation() {
                 recomendation.length > 0 ?
 
                     recomendation.map((ele) => (
-                        <> { ele.video?.thumbnails[0]?.url?  <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
+                        <Box key={ele.video?.thumbnails[0]?.url + Math.random()}> {ele.video?.thumbnails[0]?.url ? <Link to={`/video/${ele.video?.videoId}`} key={Math.random()}>
                             {/* big screen */}
                             <Flex display={{ base: "none", md: "flex", lg: "flex" }} width={'350px'} _hover={{ cursor: 'pointer' }} p='5px'>
 
@@ -101,7 +100,7 @@ function Recommendation() {
 
                             </Box>
 
-                        </Link> :""}</>
+                        </Link> : ""}</Box>
 
                     ))
                     : <Box>  <Stack>

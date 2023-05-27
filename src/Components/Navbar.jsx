@@ -11,7 +11,7 @@ import { IoSearchOutline } from 'react-icons/io5';
 import { BiVideoPlus } from 'react-icons/bi'
 import { IoIosNotificationsOutline } from 'react-icons/io'
 import { VscAccount } from 'react-icons/vsc'
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
 import { MdMic } from 'react-icons/md'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
@@ -22,6 +22,7 @@ function Navbar() {
     const { loading, data } = useSelector((state) => state.video);
     const { setsearch } = useSelector((state) => state.searchState);
     const [searchbar, setSearchBar] = useState(false);
+    const navigate=useNavigate();
     const {
         transcript,
         listening,
@@ -51,6 +52,7 @@ function Navbar() {
     const handlepress = (e) => {
         if (va.current.value) {
             if (e.key == "Enter") {
+                console.log("entered")
                 getdata();
             }
         }
@@ -60,7 +62,7 @@ function Navbar() {
     const getdata = () => {
         dispatch(updateSearch(va.current.value));
 
-        return <Navigate to='/' />
+        navigate("/")
     }
 
 
@@ -72,7 +74,6 @@ function Navbar() {
 
     }, [setsearch])
 
-    console.log(setsearch, "data");
     const record = (e) => {
        // SpeechRecognition.startListening({ continuous: true })
     }
